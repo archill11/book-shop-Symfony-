@@ -40,6 +40,11 @@ class BookCategory {
 		$this->slug = $slug;
 		return $this;
 	}
-  ///////////////////////////////////////////////////// getters & setters
 
+  
+	public function setId(?int $id): self {
+		$this->id = $id;
+		return $this;
+	}
+  ///////////////////////////////////////////////////// getters & setters
 }
