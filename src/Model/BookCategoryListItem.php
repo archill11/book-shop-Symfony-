@@ -5,7 +5,9 @@ namespace App\Model;
 class BookCategoryListItem {
 
   private int $id;
+
   private string $title;
+  
   private string $slug;
 
   public function __construct(int $id, string $title, string $slug) {

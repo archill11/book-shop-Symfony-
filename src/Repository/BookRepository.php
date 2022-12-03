@@ -5,6 +5,11 @@ namespace App\Repository;
 use App\Entity\Book;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Monolog\Handler\FirePHPHandler;
+use Monolog\Handler\StreamHandler;
+use Monolog\Level;
+use Monolog\Logger;
+use Psr\Log\LoggerInterface;
 
 /**
  * @extends ServiceEntityRepository<Book>
@@ -35,5 +40,13 @@ class BookRepository extends ServiceEntityRepository {
     }
   }
 
-  
+  public function findBookByCategoryId(int $id): array {
+
+
+    $query = $this->_em->createQuery('SELECT b FROM App\Entity\Book b WHERE :categoryId MEMBER OF b.categories');
+    $query->setParameter('categoryId', $id);
+
+    return $query->getResult();
+  }
+
 }

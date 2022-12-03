@@ -7,18 +7,29 @@ use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: BookRepository::class)]
 class BookCategory {
+
+
   #[ORM\Id]
   #[ORM\GeneratedValue]
   #[ORM\Column(type: "integer")]
-  private ?int $id = null;
+  private ?int $id;
+
 
   #[ORM\Column(type: 'string', length: 255)]
-  private ?string $title = null;
+  private ?string $title;
+
 
   #[ORM\Column(type: 'string', length: 255)]
-  private ?string $slug = null;
+  private ?string $slug;
 
-  ///////////////////////////////////////////////////// getters & setters
+
+  // /**
+  //  * @var Collection<Book>
+  //  */
+  // #[ORM\ManyToMany(targetEntity: Book::class)]
+  // private Collection $categories;
+
+  //----------------------getters & setters
   public function getId(): ?int {
     return $this->id;
   }
@@ -32,19 +43,18 @@ class BookCategory {
     return $this;
   }
 
-	public function getSlug(): ?string {
-		return $this->slug;
-	}
-	
-	public function setSlug(?string $slug): self {
-		$this->slug = $slug;
-		return $this;
-	}
+  public function getSlug(): ?string {
+    return $this->slug;
+  }
 
-  
-	public function setId(?int $id): self {
-		$this->id = $id;
-		return $this;
-	}
-  ///////////////////////////////////////////////////// getters & setters
+  public function setSlug(?string $slug): self {
+    $this->slug = $slug;
+    return $this;
+  }
+
+  public function setId(?int $id): self {
+    $this->id = $id;
+    return $this;
+  }
+  ///////////////////////////////////////////
 }

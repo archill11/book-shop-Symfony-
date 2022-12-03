@@ -2,11 +2,9 @@
 
 namespace App\Model;
 
-class BookCategoryListResponse {
+class BookListResponse {
 
-  /** 
-   * @var BookCategoryListItem[] 
-  */
+  /** @var BookListItem[] */
   private array $items;
 
   public function __construct(array $items) {

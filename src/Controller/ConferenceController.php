@@ -10,7 +10,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class ConferenceController extends AbstractController {
 
-  public function __construct(private BookRepository $bookRepository) {}
+  public function __construct(private BookRepository $bookRepository) {} // инжектируем сервис в контроллер
 
   #[Route('/conference', name: 'app_conference')]
   public function index(LoggerInterface $logger): Response {
