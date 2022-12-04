@@ -32,10 +32,7 @@ class BookController extends AbstractController {
    */
   #[Route(path: '/api/v1/category/{categoryId}/books', methods: ['GET'])]
   public function BooksByCategory(int $categoryId): Response {
-    try {
-      return $this->json($this->bookService->getBooksByCategory($categoryId));
-    } catch (BookCategoryNotFoundException $exc) {
-      throw new HttpException($exc->getCode(), $exc->getMessage());
-    }
+    
+    return $this->json($this->bookService->getBooksByCategory($categoryId));
   }
 }

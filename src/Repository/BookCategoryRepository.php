@@ -26,4 +26,8 @@ class BookCategoryRepository extends ServiceEntityRepository {
   public function findAllSortedByTitle(): array {
     return $this->findBy([], ['title' => Criteria::ASC]);
   }
+
+  public function existsById(int $id): bool {
+    return $this->find($id) !== null;
+  }
 }

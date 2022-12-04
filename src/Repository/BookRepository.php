@@ -34,18 +34,15 @@ class BookRepository extends ServiceEntityRepository {
 
   public function remove(Book $entity, bool $flush = false): void {
     $this->getEntityManager()->remove($entity);
-
+    
     if ($flush) {
       $this->getEntityManager()->flush();
     }
   }
 
   public function findBookByCategoryId(int $id): array {
-
-
     $query = $this->_em->createQuery('SELECT b FROM App\Entity\Book b WHERE :categoryId MEMBER OF b.categories');
     $query->setParameter('categoryId', $id);
-
     return $query->getResult();
   }
 
