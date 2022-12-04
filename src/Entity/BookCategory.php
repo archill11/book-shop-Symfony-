@@ -21,13 +21,7 @@ class BookCategory {
 
   #[ORM\Column(type: 'string', length: 255)]
   private ?string $slug;
-
-
-  // /**
-  //  * @var Collection<Book>
-  //  */
-  // #[ORM\ManyToMany(targetEntity: Book::class)]
-  // private Collection $categories;
+  
 
   //----------------------getters & setters
   public function getId(): ?int {
@@ -49,11 +43,6 @@ class BookCategory {
 
   public function setSlug(?string $slug): self {
     $this->slug = $slug;
-    return $this;
-  }
-
-  public function setId(?int $id): self {
-    $this->id = $id;
     return $this;
   }
   ///////////////////////////////////////////
