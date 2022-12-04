@@ -25,10 +25,10 @@ class BookRepository extends ServiceEntityRepository {
   }
 
   public function save(Book $entity, bool $flush = false): void {
-    $this->getEntityManager()->persist($entity);
+    $this->getEntityManager()->persist($entity); // сохранить $entity
 
     if ($flush) {
-      $this->getEntityManager()->flush();
+      $this->getEntityManager()->flush(); // выполнить команду к БД
     }
   }
 
@@ -41,7 +41,12 @@ class BookRepository extends ServiceEntityRepository {
   }
 
   public function findBookByCategoryId(int $id): array {
-    $query = $this->_em->createQuery('SELECT b FROM App\Entity\Book b WHERE :categoryId MEMBER OF b.categories');
+    $query = $this->_em->createQuery(
+      'SELECT b 
+      FROM App\Entity\Book b 
+      WHERE :categoryId 
+      MEMBER OF b.categories'
+    );
     $query->setParameter('categoryId', $id);
     return $query->getResult();
   }
